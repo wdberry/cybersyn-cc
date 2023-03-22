@@ -1,6 +1,7 @@
 local config = require("config")
-local ltnc = flib.copy_prototype(data.raw["constant-combinator"]["constant-combinator"], "ltn-combinator")
-ltnc.icon = "__LTN_Combinator_Modernized__/graphics/ltn-combinator.png"
+local util = require("util")
+local ltnc = flib.copy_prototype(data.raw["constant-combinator"]["constant-combinator"], "cybersyn-constant-combinator")
+ltnc.icon = "__cybersyn-cc__/graphics/cybersyn-constant-combinator.png"
 ltnc.icon_size = 32
 ltnc.icon_mipmaps = nil
 ltnc.next_upgrade = nil
@@ -10,14 +11,14 @@ ltnc.sprites = make_4way_animation_from_spritesheet(
   { layers =
     {
       {
-        filename = "__LTN_Combinator_Modernized__/graphics/ltn-combinator.png",
+        filename = "__cybersyn-cc__/graphics/cybersyn-constant-combinator.png",
         width = 58,
         height = 52,
         frame_count = 1,
         shift = util.by_pixel(0, 5),
         hr_version = {
           scale = 0.5,
-          filename = "__LTN_Combinator_Modernized__/graphics/hr-ltn-combinator.png",
+          filename = "__cybersyn-cc__/graphics/hr-cybersyn-constant-combinator.png",
           width = 114,
           height = 102,
           frame_count = 1,
@@ -45,12 +46,12 @@ ltnc.sprites = make_4way_animation_from_spritesheet(
   }
 )
 
-local ltnc_item = flib.copy_prototype(data.raw["item"]["constant-combinator"], "ltn-combinator")
-ltnc_item.icon = "__LTN_Combinator_Modernized__/graphics/ltn-combinator-item.png"
+local ltnc_item = flib.copy_prototype(data.raw["item"]["constant-combinator"], "cybersyn-constant-combinator")
+ltnc_item.icon = "__cybersyn-cc__/graphics/cybersyn-constant-combinator-item.png"
 ltnc_item.icon_size = 64
 ltnc_item.icon_mipmaps = 4
 
-local ltnc_recipe = flib.copy_prototype(data.raw["recipe"]["constant-combinator"], "ltn-combinator")
+local ltnc_recipe = flib.copy_prototype(data.raw["recipe"]["constant-combinator"], "cybersyn-constant-combinator")
 ltnc_recipe.ingredients = {
   {"constant-combinator", 1},
   {"electronic-circuit", 1},

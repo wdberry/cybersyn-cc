@@ -25,7 +25,7 @@ local function find_combinator_in_network_tree(first_entity, max_depth, green_wi
     if not entity then break end
 
     --dlog("-- checking entity: " .. entity.name)
-    if entity.name == "ltn-combinator" then
+    if entity.name == "cybersyn-constant-combinator" then
       result = entity
       break
     end
@@ -65,20 +65,20 @@ local function close_combinator(player_index)
 end -- close_combinator()
 
 -- register remote interfaces
-remote.add_interface("ltn-combinator", {
-    -- Usage: result = remote.call("ltn-combinator", "open_ltn_combinator", player_index (integer), entity (LuaEntity), register (boolean))
+remote.add_interface("cybersyn-constant-combinator", {
+    -- Usage: result = remote.call("cybersyn-constant-combinator", "open_ltn_combinator", player_index (integer), entity (LuaEntity), register (boolean))
     --  player_index: (required)
-    --  entity: any entity that is in the same green-circuit-network as the wanted ltn-combinator (required)
+    --  entity: any entity that is in the same green-circuit-network as the wanted cybersyn-constant-combinator (required)
     --  register: registers the opened window in game.player[i].opened (optional, default true)
     --  returns a boolean, whether a combinator was opened
-    open_ltn_combinator = open_combinator,
+    open_cs_constant_combinator = open_combinator,
 
-    -- Usage: result = remote.call("ltn-combinator", "close_ltn_combinator", player_index (integer))
+    -- Usage: result = remote.call("cybersyn-constant-combinator", "close_ltn_combinator", player_index (integer))
     --  player_index: (required)
     --
-    --  Calling this interface is only required if a ltn-combinator was previously opened with register = false.
+    --  Calling this interface is only required if a cybersyn-constant-combinator was previously opened with register = false.
     --  Use this method to keep your own window open.
-    close_ltn_combinator = close_combinator
+    close_cs_constant_combinator = close_combinator
   })
 
   -- debugging tool for remote call testing
@@ -89,12 +89,12 @@ remote.add_interface("ltn-combinator", {
     end
 
     if entity == nil or entity.valid ~= true then return end
-    remote.call("ltn-combinator", "open_ltn_combinator", event.player_index, entity, true)
+    remote.call("cybersyn-constant-combinator", "open_cs_constant_combinator", event.player_index, entity, true)
   end
 
   local function ltnc_remote_close(event)
-    remote.call("ltn-combinator", "close_ltn_combinator", event.player_index)
+    remote.call("cybersyn-constant-combinator", "close_cs_constant_combinator", event.player_index)
   end
 
-  commands.add_command("ltncopen", "Use /ltncopen while hovering an entity to open a near ltn combinator", ltnc_remote_open)
-  commands.add_command("ltncclose", "Use /ltncclose to close the opened ltn combinator", ltnc_remote_close)
+  commands.add_command("csccopen", "Use /ltncopen while hovering an entity to open a near ltn combinator", ltnc_remote_open)
+  commands.add_command("csccclose", "Use /ltncclose to close the opened ltn combinator", ltnc_remote_close)

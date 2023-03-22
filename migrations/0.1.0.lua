@@ -1,5 +1,5 @@
 for index, force in pairs(game.forces) do
-  if force.technologies["logistic-train-network"] ~= nil and force.technologies["logistic-train-network"].researched then
-    force.recipes["ltn-combinator"].enabled = true
+  if force.technologies["cybersyn-train-network"] ~= nil and force.technologies["cybersyn-train-network"].researched then
+    force.recipes["cybersyn-constant-combinator"].enabled = true
   end
 end
